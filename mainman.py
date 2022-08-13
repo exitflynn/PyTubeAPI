@@ -25,10 +25,10 @@ while i < n:
     if str(a).find('class="channel-name"') != -1:
         print(' |', l[i].getText())
         i += 1
-    else if str(a).find('class="video-data"') != -1:
+    elif (str(a).find('class="video-data"') != -1):
         print(' - ', l[i].getText())
     else:
-        print("\n ", ;[i].getText())
+        print("\n ", l[i].getText())
     i += 1
 
 # print(l[145]['class'][0])
