@@ -91,7 +91,6 @@ Reflector==2021.11.20.2.41.3
 requests==2.27.1
 resolvelib==0.8.1
 retrying==1.3.3
-rich @ file:///build/python-rich/src/rich-12.4.4/dist/rich-12.4.4-py3-none-any.whl
 setproctitle==1.2.3
 shtab==1.5.5
 six==1.16.0
