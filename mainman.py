@@ -14,30 +14,34 @@ def main(search_term):
     txt = resp.text
 
     soup = BeautifulSoup(txt, "html.parser")
-    l = soup.find_all(attrs={'dir':'auto'})
-    n = len(l)
+    rc = soup.find_all(attrs={'dir':'auto'})
+    n = len(rc)
+    
+    vlinksoup = soup.find_all(attrs={'title':'Watch on YouTube'})
+    videolinks = [RSet['href'] for RSet in vlinksoup]
 
     i = 0
-    m = 0
+    videocounter = 0
     dic = {}
 
     while i < n:
-        a = l[i]
+        a = rc[i]
         if str(a).find('class') == -1:
-            title = l[i].getText()
+            title = rc[i].getText()
         elif str(a).find('class="channel-name"') != -1:
-            channel = l[i].getText()
+            channel = rc[i].getText()
         elif str(a).find('ago') != -1:
-            t_upload = l[i].getText()
+            t_upload = rc[i].getText()
         elif str(a).find('views') != -1:
-            views = l[i].getText()
-            dic[m] = {
+            views = rc[i].getText()
+            dic[videocounter] = {
+                "link" : videolinks[videocounter],
                 "title" : title,
                 "channel" : channel,
                 "upload_time" : t_upload,
                 "views" : views
                 }
-            m += 1  
+            videocounter += 1  
         i += 1
     print(dic)
     return dic
